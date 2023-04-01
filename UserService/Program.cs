@@ -18,7 +18,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// Remove this for now, needs some more configuration to work in container
+//app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
