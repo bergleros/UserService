@@ -7,8 +7,8 @@ namespace UserService.Logic
     /// </summary>
     public class UserLogic
     {
-        // The data is stored here in memory belonging to the class instance. Of course as soon as there is more than one node running the application then this becomes a problem,
-        // each node will only have its own data and know nothing about what userids the other nodes have returned.
+        // The data is stored here in memory belonging to the class instance. Of course as soon as there is more than one node running the application then this becomes a
+        // problem, each node will only have its own data and know nothing about what userids the other nodes have returned.
         //
         // In a production environment, one solution could be to route requests to nodes based on the secret (e.g. calculate a numeric value from the secret and select
         // the node based on the modulo of the number of nodes). Another solution could be a shared data storage such as a database or a Redis cache.
