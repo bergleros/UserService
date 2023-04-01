@@ -25,12 +25,15 @@ namespace UserService.Logic
         {
             if (secret.Length < 3 || secret.Length > 32)
             {
-                // This shouldn't happen since the API controller restricts the input. Adding a check here and raising exception
+                // This shouldn't happen since the API controller restricts the input. Adding a check here and raising an exception
                 // in case it gets bypassed, e.g. if someone adds another API endpoint and forgets to restrict the length. 
                 // It will be annoying though to have to change this in many places if we were to change the length restrictions,
                 // so it might be a good idea to define this as a shared constant.
                 throw new ArgumentException($"Secret must be between 3 and 32 characters, is {secret.Length}");
             }
+
+            // According to the description we expect a high number of requests to get user by secret. Depending on how high the number is and
+            // how often we are getting existing users, we might want to cache the results to avoid entering this locked section for every request.
 
             lock (_addLock)
             {
